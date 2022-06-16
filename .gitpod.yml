@@ -1,0 +1,5 @@
+tasks:
+  - init: |
+      go mod tidy
+    command: |
+      go run main.go
