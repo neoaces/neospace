@@ -13,9 +13,10 @@ func sum(c chan float64, x float64) {  // Note: the channel is strictly typed, a
 func main() {
 	c := make(chan float64)  // Like maps, channels must use make() before usage
 	go sum(c, 5.0)  // Goroutine to calculate the sum.
+	go sum(c, 6.0)
 
-	num := <-c  // Receives from channel c, of which the input is from the goroutine of sum()
+	num1, num2 := <-c, <-c  // Receives from channel c, of which the input is from the goroutine of sum()
 
-	fmt.Printf("%v", num)
-	fmt.Printf("%v", "Hello world!")
+	fmt.Printf("%v, %v", num1, num2)
+	fmt.Printf("\n%v", "Hello world!")
 }
